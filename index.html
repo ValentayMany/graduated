@@ -366,67 +366,75 @@
       line-height: 1.9
     }
 
-    .message-box {
+    .message-trigger {
       position: fixed;
       right: max(16px, env(safe-area-inset-right, 0px));
       bottom: max(16px, env(safe-area-inset-bottom, 0px));
       z-index: 20;
-      width: auto;
       margin: 0;
-      text-align: left;
-      border: 0;
-      background: transparent
-    }
-
-    .message-box summary {
       padding: 12px 18px;
+      border: 0;
       color: #fff;
       font-weight: 700;
       cursor: pointer;
-      list-style: none;
       white-space: nowrap;
       background: var(--pink);
       border-radius: 999px;
       box-shadow: 0 5px 0 var(--deep)
     }
 
-    .message-box summary::-webkit-details-marker {
-      display: none
-    }
-
-    .message-box summary::after {
-      content: '+';
-      float: right;
-      font-size: 20px;
-      line-height: 1
-    }
-
-    .message-box[open] summary::after {
-      content: '−'
-    }
-
-    .message-content {
-      position: absolute;
-      right: 0;
-      bottom: calc(100% + 14px);
+    .message-dialog {
+      position: fixed;
+      inset: auto max(16px, env(safe-area-inset-right, 0px)) calc(82px + env(safe-area-inset-bottom, 0px)) auto;
       width: min(360px, calc(100vw - 32px));
+      max-height: min(70dvh, 420px);
+      overflow-y: auto;
+      margin: 0;
+      padding: 24px 20px 20px;
       background: var(--card);
       border: 2px solid var(--lav);
       border-radius: 16px;
       box-shadow: 0 6px 0 rgba(217, 194, 255, .55);
-      margin: 0;
-      padding: 18px;
+      color: var(--ink);
       line-height: 1.9
     }
 
+    .message-dialog::backdrop {
+      background: rgba(38, 24, 36, .42);
+      backdrop-filter: blur(2px)
+    }
+
+    .message-dialog p {
+      margin: 0
+    }
+
+    .message-close {
+      position: sticky;
+      top: 0;
+      float: right;
+      width: 36px;
+      height: 36px;
+      margin: -12px -10px 4px 10px;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: var(--bg2);
+      color: var(--ink);
+      box-shadow: none;
+      font-size: 24px;
+      line-height: 1
+    }
+
     @media (max-width: 480px) {
-      .message-box {
+      .message-trigger {
         right: max(12px, env(safe-area-inset-right, 0px));
-        bottom: max(12px, env(safe-area-inset-bottom, 0px))
+        bottom: max(16px, env(safe-area-inset-bottom, 0px))
       }
 
-      .message-content {
-        width: min(360px, calc(100vw - 48px))
+      .message-dialog {
+        inset: auto 12px calc(78px + env(safe-area-inset-bottom, 0px)) auto;
+        width: calc(100vw - 24px);
+        max-height: min(65dvh, 420px)
       }
     }
 
@@ -566,10 +574,11 @@
       <div class="from" data-k="from"></div>
     </div>
 
-    <details class="message-box hide">
-      <summary>💌 ກົດເບິ່ງຂໍ້ຄວາມພິເສດ</summary>
-      <p class="message-content">ຈອມຂວັນເກັ່ງຫຼາຍໆເດີ ຂໍໃຫ້ພູມໃຈໃນຕົວເອງກັບຄວາມສຳເລັດຄັ້ງນີ້ ແລະຂໍໃຫ້ທຸກມື້ຕໍ່ຈາກນີ້ເຕັມໄປດ້ວຍຮອຍຍິ້ມ ເຂົາຈະຄອຍເຊຍແລະເປັນກຳລັງໃຈໃຫ້ສະເໝີເດີ 🌷</p>
-    </details>
+    <button class="message-trigger hide" id="messageOpen" type="button" aria-haspopup="dialog" aria-controls="messageDialog">💌 ກົດເບິ່ງຂໍ້ຄວາມພິເສດ</button>
+    <dialog class="message-dialog" id="messageDialog" aria-label="ຂໍ້ຄວາມພິເສດ">
+      <button class="message-close" id="messageClose" type="button" aria-label="ປິດ">×</button>
+      <p>ຈອມຂວັນເກັ່ງຫຼາຍໆເດີ ຂໍໃຫ້ພູມໃຈໃນຕົວເອງກັບຄວາມສຳເລັດຄັ້ງນີ້ ແລະຂໍໃຫ້ທຸກມື້ຕໍ່ຈາກນີ້ເຕັມໄປດ້ວຍຮອຍຍິ້ມ ເຂົາຈະຄອຍເຊຍແລະເປັນກຳລັງໃຈໃຫ້ສະເໝີເດີ 🌷 ແລະ ສຸກສັນວັນເກີດລ່ວງໜ້າເດີ້🌷💗</p>
+    </dialog>
   </div>
 
   <script>
@@ -622,10 +631,14 @@
       var t = setInterval(function () {
         v--;
         if (v > 0) { n.style.animation = 'none'; void n.offsetWidth; n.style.animation = ''; n.textContent = v }
-        else { clearInterval(t); c.classList.add('hide'); document.getElementById('reveal').classList.remove('hide'); document.querySelector('.message-box').classList.remove('hide'); burst() }
+        else { clearInterval(t); c.classList.add('hide'); document.getElementById('reveal').classList.remove('hide'); document.getElementById('messageOpen').classList.remove('hide'); burst() }
       }, 900);
     });
     document.getElementById('again').addEventListener('click', burst);
+    var messageDialog = document.getElementById('messageDialog');
+    document.getElementById('messageOpen').addEventListener('click', function () { messageDialog.showModal() });
+    document.getElementById('messageClose').addEventListener('click', function () { messageDialog.close() });
+    messageDialog.addEventListener('click', function (event) { if (event.target === messageDialog) messageDialog.close() });
   </script>
 </body>
 
