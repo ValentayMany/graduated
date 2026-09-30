@@ -46,17 +46,12 @@
       <p class="sub" data-k="sub"></p>
 
       <div class="pcards">
-        <div class="pcard"><img
-            src="assets/images/photo-01.jpg"
-            alt=""></div>
-        <div class="pcard"><img
-            src="assets/images/photo-02.jpg"
-            alt=""></div>
-        <div class="pcard"><img
-            src="assets/images/photo-03.jpg"
-            alt="">
+        <div class="pcard"><img src="assets/images/photo-01.jpg" alt="Birthday portrait 1"></div>
+        <div class="pcard"><img src="assets/images/photo-02.jpg" alt="Birthday portrait 2"></div>
+        <div class="pcard"><img src="assets/images/photo-03.jpg" alt="Birthday portrait 3">
           <small data-k="cap"></small>
         </div>
+        <div class="pcard hide"><img src="assets/images/photo-03.jpg" alt="Birthday portrait 4"></div>
       </div>
 
       <div class="letter">
@@ -71,10 +66,12 @@
       </div>
 
       <button id="again" data-k="btn"></button>
+  <button id="chooseOccasion" class="secondary-action" type="button">🎁 ເລືອກຄຳອວຍພອນໃໝ່</button>
       <div class="from" data-k="from"></div>
     </div>
 
-    <button class="message-trigger hide" id="messageOpen" type="button" aria-haspopup="dialog" aria-controls="messageDialog">💌 ກົດເບິ່ງຂໍ້ຄວາມພິເສດ</button>
+    <button class="message-trigger hide" id="messageOpen" type="button" aria-haspopup="dialog"
+      aria-controls="messageDialog">💌 ກົດເບິ່ງຂໍ້ຄວາມພິເສດ</button>
     <dialog class="message-dialog" id="messageDialog" aria-label="ຂໍ້ຄວາມພິເສດ">
       <button class="message-close" id="messageClose" type="button" aria-label="ປິດ">×</button>
       <p id="specialMessage"></p>

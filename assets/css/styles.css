@@ -284,16 +284,16 @@ h1 span {
 }
 
 .pcards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px 12px;
   margin: 26px auto 10px;
-  max-width: 460px
+  width: 100%;
+  max-width: 320px
 }
 
 .pcard {
-  width: 140px;
+  width: 100%;
   padding: 8px 8px 22px;
   background: var(--card);
   border-radius: 12px;
@@ -315,7 +315,8 @@ h1 span {
 .pcard img {
   display: block;
   width: 100%;
-  height: 150px;
+  height: auto;
+  aspect-ratio: 2 / 3;
   object-fit: cover;
   border-radius: 8px;
   background: #eee
@@ -529,6 +530,16 @@ button {
 button:active {
   transform: translateY(4px);
   box-shadow: 0 2px 0 var(--deep)
+}
+
+.secondary-action {
+  display: block;
+  margin: 14px auto 0;
+  padding: 10px 20px;
+  border: 2px solid var(--pink);
+  background: transparent;
+  color: var(--deep);
+  box-shadow: none
 }
 
 .from {
