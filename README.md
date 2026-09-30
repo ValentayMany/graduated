@@ -1,6 +1,6 @@
-# Graduation Surprise
+# Graduation & Birthday Surprise
 
-หน้าเว็บเซอร์ไพรส์แสดงความยินดีสำหรับบัณฑิต สร้างด้วย HTML, CSS และ JavaScript แบบไม่ต้องติดตั้งแพ็กเกจ
+หน้าเว็บเซอร์ไพรส์สำหรับวันรับปริญญาและวันเกิด สร้างด้วย HTML, CSS และ JavaScript แบบไม่ต้องติดตั้งแพ็กเกจ
 
 ## ความสามารถ
 
@@ -21,14 +21,26 @@
 4. เลือก branch `main` และโฟลเดอร์ `/ (root)` แล้วกด **Save**
 5. รอให้ GitHub Pages เผยแพร่เว็บไซต์ แล้วเปิด URL ที่แสดงในหน้า Pages
 
-## ปรับแต่งข้อความ
+## ปรับแต่ง
 
-แก้ข้อความใน `index.html` โดยค้นหาชื่อผู้รับ ข้อความในส่วน `var T` และข้อความในกล่องพิเศษ แล้วบันทึกไฟล์เพื่อดูผลในเบราว์เซอร์
+- แก้ข้อความและคำอวยพรใน `assets/js/app.js` ภายใน `occasions` และ `specialMessages`
+- แก้สีและรูปแบบหน้าเว็บใน `assets/css/styles.css`
+- แก้โครงหน้าและรูปภาพใน `index.html`
 
 ## โครงสร้างโปรเจกต์
 
 ```text
 .
+|-- assets/
+ |   |-- css/
+ |   |   `-- styles.css
+ |   |-- images/
+ |   |   |-- photo-01.jpg
+ |   |   |-- photo-02.jpg
+ |   |   `-- photo-03.jpg
+ |   `-- js/
+ - แก้โครงหน้าใน `index.html` และเปลี่ยนรูปใน `assets/images`
+|       `-- app.js
 |-- index.html
 |-- README.md
 `-- .gitignore
