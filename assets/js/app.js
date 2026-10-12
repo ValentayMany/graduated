@@ -46,7 +46,10 @@ var specialMessages = {
   graduation:
     "ຈອມຂວັນເກັ່ງຫຼາຍໆເດີ ຂໍໃຫ້ພູມໃຈໃນຕົວເອງກັບຄວາມສຳເລັດຄັ້ງນີ້ ແລະຂໍໃຫ້ທຸກມື້ຕໍ່ຈາກນີ້ເຕັມໄປດ້ວຍຮອຍຍິ້ມ ເຂົາຈະຄອຍເຊຍແລະເປັນກຳລັງໃຈໃຫ້ສະເໝີເດີ 🌷",
 };
-var cur = "birthday";
+var cur = document.body.dataset.occasion;
+var messageOpen = document.getElementById("messageOpen");
+var specialMessage = document.getElementById("specialMessage");
+specialMessage.textContent = specialMessages[cur];
 var birthdayPhotos = [
   "assets/images/WhatsApp Image 2026-09-30 at 20.43.17.jpeg",
   "assets/images/WhatsApp Image 2026-09-30 at 20.43.18.jpeg",
@@ -58,6 +61,9 @@ var graduationPhotos = [
   "assets/images/photo-02.jpg",
   "assets/images/photo-03.jpg",
 ];
+render();
+document.getElementById("topIcon").textContent =
+  cur === "birthday" ? "🎂" : "🎓";
 function render() {
   document.documentElement.lang = "lo";
   document.querySelectorAll("[data-k]").forEach(function (e) {
@@ -66,28 +72,16 @@ function render() {
   var photos = cur === "birthday" ? birthdayPhotos : graduationPhotos;
   document.querySelectorAll(".pcard").forEach(function (card, index) {
     card.classList.toggle("hide", index >= photos.length);
-    if (photos[index]) card.querySelector("img").src = photos[index];
+    if (photos[index]) {
+      var image = card.querySelector("img");
+      image.src = photos[index];
+      image.alt =
+        cur === "birthday"
+          ? "ຮູບຄວາມຊົງຈຳວັນເກີດ " + (index + 1)
+          : "ຮູບຄວາມຊົງຈຳວັນຮັບປະລິນຍາ " + (index + 1);
+    }
   });
 }
-var occasionDialog = document.getElementById("occasionDialog");
-document.querySelectorAll("[data-occasion]").forEach(function (button) {
-  button.addEventListener("click", function () {
-    cur = this.getAttribute("data-occasion");
-    render();
-    document.getElementById("topIcon").textContent =
-      cur === "birthday" ? "🎂" : "🎓";
-    document.getElementById("specialMessage").textContent =
-      specialMessages[cur];
-    occasionDialog.close();
-    document.getElementById("reveal").classList.add("hide");
-    document.getElementById("counter").classList.add("hide");
-    document.getElementById("intro").classList.remove("hide");
-    document.getElementById("messageOpen").classList.add("hide");
-    document.getElementById("num").textContent = "3";
-    started = false;
-  });
-});
-
 // floating hearts background
 var bg = document.getElementById("bg"),
   hs = ["🌸", "✨", "💗", "🌷", "⭐", "🎉"];
@@ -102,6 +96,12 @@ for (var i = 0; i < 16; i++) {
 }
 
 function burst() {
+  if (
+    window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
+    return;
+  }
   var e =
     cur === "birthday"
       ? ["🎉", "🌸", "⭐", "🎈", "🎂", "✨", "🧸", "🎀", "🕯️"]
@@ -124,10 +124,11 @@ function burst() {
   }
 }
 var started = false;
-document.getElementById("intro").addEventListener("click", function () {
+var intro = document.getElementById("intro");
+function startSurprise() {
   if (started) return;
   started = true;
-  this.classList.add("hide");
+  intro.classList.add("hide");
   var c = document.getElementById("counter"),
     n = document.getElementById("num"),
     v = 3;
@@ -144,18 +145,30 @@ document.getElementById("intro").addEventListener("click", function () {
       c.classList.add("hide");
       document.getElementById("reveal").classList.remove("hide");
       document.getElementById("messageOpen").classList.remove("hide");
+      window.scrollTo(0, 0);
+      document.getElementById("revealTitle").focus({ preventScroll: true });
       burst();
     }
   }, 900);
+}
+intro.addEventListener("click", startSurprise);
+intro.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    startSurprise();
+  } else if (event.key === " ") {
+    event.preventDefault();
+  }
+});
+intro.addEventListener("keyup", function (event) {
+  if (event.key === " ") {
+    event.preventDefault();
+    startSurprise();
+  }
 });
 document.getElementById("again").addEventListener("click", burst);
-document
-  .getElementById("chooseOccasion")
-  .addEventListener("click", function () {
-    occasionDialog.showModal();
-  });
 var messageDialog = document.getElementById("messageDialog");
-document.getElementById("messageOpen").addEventListener("click", function () {
+messageOpen.addEventListener("click", function () {
   messageDialog.showModal();
 });
 document.getElementById("messageClose").addEventListener("click", function () {
@@ -164,4 +177,3 @@ document.getElementById("messageClose").addEventListener("click", function () {
 messageDialog.addEventListener("click", function (event) {
   if (event.target === messageDialog) messageDialog.close();
 });
-occasionDialog.showModal();

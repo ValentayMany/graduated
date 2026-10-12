@@ -4,81 +4,125 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>ຂໍ້ຄວາມພິເສດສຳລັບຈອມຂວັນ 💌</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Mali:wght@400;600;700&family=Noto+Sans+Lao+Looped:wght@400;600;700&display=swap"
-    rel="stylesheet">
+  <title>ເລືອກຄຳອວຍພອນສຳລັບຈອມຂວັນ 💌</title>
+  <link href="https://fonts.googleapis.com/css2?family=Mali:wght@400;600;700&family=Noto+Sans+Lao+Looped:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
-<body>
-  <div class="bg" id="bg"></div>
-  <dialog class="occasion-dialog" id="occasionDialog" aria-labelledby="occasionTitle" aria-describedby="occasionHint">
-    <h2 id="occasionTitle">💌 ເລືອກຄຳອວຍພອນ</h2>
-    <p id="occasionHint">ເລືອກເລື່ອງພິເສດສຳລັບຈອມຂວັນ</p>
-    <div class="occasion-options">
-      <button type="button" data-occasion="graduation">🎓 ຍິນດີນຳບັນດິດໃໝ່</button>
-      <button type="button" data-occasion="birthday">🎂 ສຸກສັນວັນເກີດ</button>
+<body class="min-h-screen overflow-x-hidden relative text-[#3d2a3a]"
+  style="font-family:'Mali','Noto Sans Lao Looped',sans-serif;
+         background:radial-gradient(ellipse at 18% 8%,rgba(255,182,220,.50) 0%,transparent 52%),
+                    radial-gradient(ellipse at 82% 6%,rgba(216,180,254,.40) 0%,transparent 48%),
+                    radial-gradient(ellipse at 55% 92%,rgba(254,205,211,.45) 0%,transparent 52%),
+                    radial-gradient(ellipse at 8% 80%,rgba(253,230,138,.30) 0%,transparent 46%),
+                    linear-gradient(155deg,#fff0f5 0%,#f8f0ff 48%,#fff4e6 100%);
+         background-attachment:fixed">
+
+  <!-- ambient glow orbs -->
+  <div class="fixed -top-24 -left-24 w-96 h-96 rounded-full bg-pink-300 blur-3xl opacity-25 pointer-events-none z-0" aria-hidden="true"></div>
+  <div class="fixed -bottom-20 -right-20 w-80 h-80 rounded-full bg-purple-300 blur-3xl opacity-25 pointer-events-none z-0" aria-hidden="true"></div>
+  <div class="fixed top-1/2 left-2/3 w-56 h-56 rounded-full bg-yellow-200 blur-3xl opacity-20 pointer-events-none z-0" aria-hidden="true"></div>
+
+  <!-- home page -->
+  <main class="relative z-10 flex flex-col items-center justify-center gap-5 min-h-screen min-h-svh max-w-5xl mx-auto px-4 py-16">
+
+    <!-- floating sticker -->
+    <div class="text-[40px] tracking-widest animate-sticker-beg" aria-hidden="true">💌 🌸 💗</div>
+
+    <!-- heading -->
+    <h1 class="m-0 text-center text-[clamp(28px,5vw,46px)] font-bold leading-snug gtext">
+      ມີຄຳອວຍພອນພິເສດມາໃຫ້ 🎀
+    </h1>
+    <p class="m-0 text-[#9b7b90] text-lg font-bold">ເລືອກໜ້າທີ່ຢາກເປີດເບິ່ງເດີ້ 🥺</p>
+
+    <!-- choice cards -->
+    <section class="grid grid-cols-2 max-sm:grid-cols-1 gap-5 w-full max-w-2xl mt-2" aria-label="ເລືອກຄຳອວຍພອນ">
+
+      <!-- birthday -->
+      <a class="home-option birthday-option flex flex-col items-center justify-center gap-3 min-h-64 max-sm:min-h-0 max-sm:flex-row max-sm:justify-start max-sm:p-5
+                p-9 rounded-[28px] no-underline text-[#3d2a3a] backdrop-blur-xl
+                shadow-[0_16px_40px_rgba(190,24,93,.13),inset_0_1px_0_rgba(255,255,255,.9)]
+                transition-all duration-300 ease-out
+                hover:-translate-y-3 hover:rotate-[-1deg] hover:scale-[1.02]
+                hover:shadow-[0_28px_60px_rgba(190,24,93,.20),inset_0_1px_0_rgba(255,255,255,.9)]
+                focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-pink-300"
+         href="birthday.html">
+        <span class="inline-block px-3 py-1 rounded-full text-[11px] font-bold text-white tracking-wide shadow-md"
+              style="background:linear-gradient(135deg,#f9a8d4,#be185d)">🎂 Birthday</span>
+        <span class="text-[52px] max-sm:text-4xl animate-bob drop-shadow-lg" aria-hidden="true">🎂</span>
+        <strong class="text-[20px] font-bold gtext">ສຸກສັນວັນເກີດ</strong>
+        <small class="text-[#9b7b90] text-[13px] leading-relaxed max-w-[24ch] text-center max-sm:text-left">ເປີດຄຳອວຍພອນວັນເກີດ 💗</small>
+      </a>
+
+      <!-- graduation -->
+      <a class="home-option graduation-option flex flex-col items-center justify-center gap-3 min-h-64 max-sm:min-h-0 max-sm:flex-row max-sm:justify-start max-sm:p-5
+                p-9 rounded-[28px] no-underline text-[#3d2a3a] backdrop-blur-xl
+                shadow-[0_16px_40px_rgba(126,34,206,.11),inset_0_1px_0_rgba(255,255,255,.9)]
+                transition-all duration-300 ease-out
+                hover:-translate-y-3 hover:rotate-[1deg] hover:scale-[1.02]
+                hover:shadow-[0_28px_60px_rgba(126,34,206,.18),inset_0_1px_0_rgba(255,255,255,.9)]
+                focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-purple-300"
+         href="graduation.html">
+        <span class="inline-block px-3 py-1 rounded-full text-[11px] font-bold text-white tracking-wide shadow-md"
+              style="background:linear-gradient(135deg,#c084fc,#7e22ce)">🎓 Graduation</span>
+        <span class="text-[52px] max-sm:text-4xl animate-bob drop-shadow-lg" aria-hidden="true" style="animation-delay:.35s">🎓</span>
+        <strong class="text-[20px] font-bold gtext-lav">ຍິນດີນຳບັນດິດໃໝ່</strong>
+        <small class="text-[#9b7b90] text-[13px] leading-relaxed max-w-[24ch] text-center max-sm:text-left">ເປີດຄຳອວຍພອນຮັບປະລິນຍາ ✨</small>
+      </a>
+    </section>
+  </main>
+
+  <!-- floating mail button -->
+  <button class="home-story-trigger fixed z-20 grid place-items-center w-[72px] h-[72px] m-0 p-0
+                 border-2 border-white/90 rounded-[22px] cursor-pointer animate-mail-glow
+                 transition-all duration-200 hover:-translate-y-1.5 hover:rotate-[-2deg] hover:scale-105
+                 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/75"
+    style="right:max(16px,env(safe-area-inset-right,0px));
+           bottom:max(16px,env(safe-area-inset-bottom,0px));
+           background:linear-gradient(145deg,#f9a8d4,#ec4899 55%,#be185d);
+           box-shadow:0 12px 30px rgba(190,24,93,.38),inset 0 1px 0 rgba(255,255,255,.4)"
+    id="homeStoryOpen" type="button"
+    aria-haspopup="dialog" aria-controls="homeStoryCard" aria-label="ເປີດກາດ ມີຫຍັງຢາກບອກເຈົ້າ">
+    <span class="text-[30px] leading-none" aria-hidden="true">💌</span>
+    <!-- notification badge -->
+    <span class="absolute -top-2.5 -right-2.5 w-6 h-6 grid place-items-center
+                 rounded-full border-[2.5px] border-white/95 text-white text-[10px] leading-none"
+          style="background:#be185d;box-shadow:0 4px 10px rgba(190,24,93,.4)">♥</span>
+    <!-- hover hint -->
+    <span class="home-story-hint fixed w-max max-w-[calc(100vw-100px)]
+                 px-3 py-2 rounded-2xl border border-pink-200/80 text-[13px] font-bold text-pink-700
+                 opacity-0 translate-x-2 transition-all duration-200 pointer-events-none"
+          style="right:calc(max(16px,env(safe-area-inset-right,0px)) + 82px);
+                 bottom:max(24px,env(safe-area-inset-bottom,0px));
+                 background:#fff8fc;box-shadow:0 8px 20px rgba(190,24,93,.12)">ມີຫຍັງຢາກບອກ 💗</span>
+  </button>
+
+  <!-- home story dialog -->
+  <dialog class="story-card" id="homeStoryCard"
+    aria-label="ກາດຂໍ້ຄວາມອ້ອນໆ" aria-labelledby="homeStoryTitle" aria-describedby="homeStoryText homeStoryLetter">
+
+    <header class="story-card-header">
+      <strong id="homeStoryTitle">💌 ມີຫຍັງຢາກບອກເຈົ້າ</strong>
+      <button class="story-close" id="homeStoryClose" type="button" aria-label="ປິດກາດ">×</button>
+    </header>
+
+    <p class="story-card-text" id="homeStoryText" aria-live="polite"></p>
+
+    <div class="story-letter" id="homeStoryLetter" hidden>
+      <div class="story-letter-body"></div>
+      <p class="story-reaction-reply" aria-live="polite" hidden></p>
     </div>
+
+    <span class="story-sticker" role="img" aria-label="ອ້ອນໆ 🥺">🥺👉👈💕</span>
+
+    <div class="story-progress" aria-label="ความคืบหน้า">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="story-actions" id="homeStoryActions"></div>
   </dialog>
-  <div class="wrap">
 
-    <div id="intro">
-      <p class="tease" data-k="tease"></p>
-      <p class="hint" data-k="hint"></p>
-      <div class="gift">
-        <div class="box"></div>
-        <div class="rib"></div>
-        <div class="lid"></div>
-        <div class="bear">🧸</div>
-        <div class="bow">🎀</div>
-      </div>
-    </div>
-
-    <div id="counter" class="hide">
-      <div class="count" id="num">3</div>
-    </div>
-
-    <div id="reveal" class="hide">
-      <div class="top" id="topIcon">🎂</div>
-      <h1><span data-k="t1"></span><br><span data-k="t2"></span></h1>
-      <div class="name" data-k="name"></div>
-      <p class="sub" data-k="sub"></p>
-
-      <div class="pcards">
-        <div class="pcard"><img src="assets/images/photo-01.jpg" alt="Birthday portrait 1"></div>
-        <div class="pcard"><img src="assets/images/photo-02.jpg" alt="Birthday portrait 2"></div>
-        <div class="pcard"><img src="assets/images/photo-03.jpg" alt="Birthday portrait 3">
-          <small data-k="cap"></small>
-        </div>
-        <div class="pcard hide"><img src="assets/images/photo-03.jpg" alt="Birthday portrait 4"></div>
-      </div>
-
-      <div class="letter">
-        <p data-k="letter"></p>
-      </div>
-
-      <h2 data-k="h2"></h2>
-      <div class="notes">
-        <div class="note" data-k="w1"></div>
-        <div class="note" data-k="w2"></div>
-        <div class="note" data-k="w3"></div>
-      </div>
-
-      <button id="again" data-k="btn"></button>
-  <button id="chooseOccasion" class="secondary-action" type="button">🎁 ເລືອກຄຳອວຍພອນໃໝ່</button>
-      <div class="from" data-k="from"></div>
-    </div>
-
-    <button class="message-trigger hide" id="messageOpen" type="button" aria-haspopup="dialog"
-      aria-controls="messageDialog">💌 ກົດເບິ່ງຂໍ້ຄວາມພິເສດ</button>
-    <dialog class="message-dialog" id="messageDialog" aria-label="ຂໍ້ຄວາມພິເສດ">
-      <button class="message-close" id="messageClose" type="button" aria-label="ປິດ">×</button>
-      <p id="specialMessage"></p>
-    </dialog>
-  </div>
-
-  <script src="assets/js/app.js" defer></script>
+  <script src="assets/js/story.js" defer></script>
 </body>
 
 </html>

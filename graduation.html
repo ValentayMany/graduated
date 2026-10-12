@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="lo">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>ຍິນດີນຳບັນດິດໃໝ່ 💌</title>
+  <link href="https://fonts.googleapis.com/css2?family=Mali:wght@400;600;700&family=Noto+Sans+Lao+Looped:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body data-occasion="graduation" class="relative min-h-screen overflow-x-hidden text-center text-[#3d2a3a]"
+  style="font-family:'Mali','Noto Sans Lao Looped',sans-serif;
+         background:radial-gradient(ellipse at 18% 8%,rgba(192,132,252,.40) 0%,transparent 52%),
+                    radial-gradient(ellipse at 82% 6%,rgba(167,243,208,.35) 0%,transparent 48%),
+                    radial-gradient(ellipse at 60% 92%,rgba(216,180,254,.40) 0%,transparent 52%),
+                    linear-gradient(155deg,#faf5ff 0%,#f0fdf4 48%,#f5f3ff 100%);
+         background-attachment:fixed">
+
+  <!-- ambient orbs -->
+  <div class="fixed -top-24 -left-24 w-96 h-96 rounded-full blur-3xl opacity-25 pointer-events-none z-0" style="background:#c084fc" aria-hidden="true"></div>
+  <div class="fixed -bottom-20 -right-20 w-80 h-80 rounded-full blur-3xl opacity-25 pointer-events-none z-0" style="background:#a7f3d0" aria-hidden="true"></div>
+  <div class="fixed top-1/3 right-[8%] w-52 h-52 rounded-full blur-3xl opacity-20 pointer-events-none z-0" style="background:#d8b4fe" aria-hidden="true"></div>
+
+  <div class="bg" id="bg"></div>
+
+  <div class="wrap relative z-10 max-w-lg mx-auto px-4 pt-6 pb-16">
+
+    <!-- ── INTRO ── -->
+    <div id="intro" role="button" tabindex="0"
+         aria-label="ເປີດກ່ອງຂອງຂວັນ" aria-describedby="giftHint"
+         class="flex flex-col items-center justify-center min-h-[82vh] cursor-pointer select-none focus-visible:outline-none">
+      <p class="tease text-2xl font-bold mb-1.5 gtext-lav" data-k="tease"></p>
+      <p class="hint text-[#9b7b90] text-[15px] mb-9" id="giftHint" data-k="hint"></p>
+
+      <!-- gift box -->
+      <div class="gift relative w-44 h-48 animate-wiggle" style="filter:drop-shadow(0 20px 32px rgba(126,34,206,.22))">
+        <div class="absolute bottom-0 left-3 right-3 h-[108px] rounded-[18px]"
+             style="background:linear-gradient(180deg,#c084fc,#9333ea);box-shadow:inset 0 -8px 0 rgba(32,0,64,.12)"></div>
+        <div class="absolute bottom-0 left-1/2 -ml-3.5 w-7 h-[140px] rounded-sm"
+             style="background:linear-gradient(180deg,#fde68a,#f59e0b)"></div>
+        <div class="absolute left-0 right-0 h-[42px] rounded-[18px]"
+             style="bottom:100px;background:linear-gradient(180deg,#7e22ce,#9333ea)"></div>
+        <div class="bear absolute top-0 left-1/2 -ml-[34px] text-[62px] leading-none animate-peek">🧸</div>
+        <div class="absolute left-1/2 -ml-5 text-[42px] leading-none" style="bottom:122px">🎀</div>
+      </div>
+    </div>
+
+    <!-- ── COUNTER ── -->
+    <div id="counter" class="hide">
+      <div id="num" class="count text-[120px] font-bold pt-[24vh] animate-pop"
+           aria-live="polite" aria-atomic="true"
+           style="background:linear-gradient(135deg,#a855f7,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">3</div>
+    </div>
+
+    <!-- ── REVEAL ── -->
+    <div id="reveal" class="hide animate-up">
+
+      <div id="topIcon" class="text-[72px] leading-none mt-9 animate-bob"
+           style="filter:drop-shadow(0 12px 24px rgba(126,34,206,.22))">🎓</div>
+
+      <h1 id="revealTitle" tabindex="-1"
+          class="mt-2 mb-1 text-[clamp(28px,8vw,40px)] font-bold leading-snug focus-visible:outline-none">
+        <span class="gtext-lav" data-k="t1"></span><br>
+        <span class="gtext-lav" data-k="t2"></span>
+      </h1>
+      <div class="name text-2xl font-bold gtext-lav mb-0.5" data-k="name"></div>
+      <p class="sub text-[#9b7b90] text-[14px] mb-1" data-k="sub"></p>
+
+      <!-- polaroid photos -->
+      <div class="pcards grid grid-cols-2 gap-[18px_14px] mx-auto mt-7 mb-3 w-full max-w-xs">
+        <div class="pcard p-2 pb-7 rounded-xl shadow-xl transition-all duration-200 hover:-translate-y-1"
+             style="background:linear-gradient(180deg,#fff,#faf5ff);border:1.5px solid rgba(192,132,252,.25)">
+          <img src="assets/images/photo-01.jpg" alt="" class="block w-full aspect-[2/3] object-cover rounded-lg" style="background:#f5f3ff">
+        </div>
+        <div class="pcard p-2 pb-7 rounded-xl shadow-xl transition-all duration-200 hover:-translate-y-1"
+             style="background:linear-gradient(180deg,#fff,#faf5ff);border:1.5px solid rgba(192,132,252,.25)">
+          <img src="assets/images/photo-02.jpg" alt="" class="block w-full aspect-[2/3] object-cover rounded-lg" style="background:#f5f3ff">
+        </div>
+        <div class="pcard p-2 pb-7 rounded-xl shadow-xl transition-all duration-200 hover:-translate-y-1"
+             style="background:linear-gradient(180deg,#fff,#faf5ff);border:1.5px solid rgba(192,132,252,.25)">
+          <img src="assets/images/photo-03.jpg" alt="" class="block w-full aspect-[2/3] object-cover rounded-lg" style="background:#f5f3ff">
+          <small class="block mt-2 text-[#9b7b90] text-xs" data-k="cap"></small>
+        </div>
+        <div class="pcard hide p-2 pb-7 rounded-xl shadow-xl"
+             style="background:linear-gradient(180deg,#fff,#faf5ff);border:1.5px solid rgba(192,132,252,.25)">
+          <img src="assets/images/photo-03.jpg" alt="" class="block w-full aspect-[2/3] object-cover rounded-lg" style="background:#f5f3ff">
+        </div>
+      </div>
+
+      <!-- letter -->
+      <div class="letter relative rounded-3xl px-6 pt-12 pb-6 mt-10 mb-3 text-left shadow-xl"
+           style="background:linear-gradient(160deg,rgba(255,255,255,.96),rgba(245,240,255,.85));border:2px dashed rgba(192,132,252,.32);box-shadow:0 18px 40px rgba(126,34,206,.12)">
+        <span class="absolute -top-7 left-1/2 -ml-7 text-[44px] leading-none px-1 py-0.5 rounded-full"
+              style="background:linear-gradient(180deg,#faf5ff,#ede9fe);box-shadow:0 4px 16px rgba(126,34,206,.2)">🌷</span>
+        <p class="m-0 leading-loose" data-k="letter"></p>
+      </div>
+
+      <h2 class="text-xl font-bold mt-7 mb-3 gtext-lav" data-k="h2"></h2>
+
+      <!-- wish notes -->
+      <div class="notes grid gap-3 text-left">
+        <div class="note rounded-2xl px-5 py-4 font-semibold text-[15px]" data-k="w1"
+             style="background:linear-gradient(135deg,rgba(250,245,255,.95),rgba(245,243,255,.95));border:1.5px solid rgba(192,132,252,.28)"></div>
+        <div class="note rounded-2xl px-5 py-4 font-semibold text-[15px]" data-k="w2"
+             style="background:linear-gradient(135deg,rgba(236,253,245,.95),rgba(240,255,248,.95));border:1.5px solid rgba(110,231,183,.35)"></div>
+        <div class="note rounded-2xl px-5 py-4 font-semibold text-[15px]" data-k="w3"
+             style="background:linear-gradient(135deg,rgba(255,253,235,.95),rgba(255,243,220,.95));border:1.5px solid rgba(253,230,138,.45)"></div>
+      </div>
+
+      <button id="again" data-k="btn"
+              class="mt-6 px-8 py-3.5 rounded-full font-bold text-white border-0 cursor-pointer
+                     transition-all duration-200 hover:-translate-y-1 hover:scale-[1.03]
+                     focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-purple-300"
+              style="background:linear-gradient(135deg,#c084fc,#9333ea 45%,#7e22ce);box-shadow:0 8px 24px rgba(126,34,206,.32),inset 0 1px 0 rgba(255,255,255,.3)"></button>
+
+      <a class="block w-fit mx-auto mt-3.5 px-5 py-2.5 rounded-full text-[14px] font-bold text-[#7e22ce] no-underline
+                transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg
+                focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-purple-300"
+         href="index.html"
+         style="border:1.5px solid rgba(192,132,252,.30);background:rgba(255,255,255,.82);box-shadow:0 8px 20px rgba(126,34,206,.10)">
+        🎁 ເລືອກຄຳອວຍພອນອື່ນ
+      </a>
+
+      <div class="from mt-7 text-[#9b7b90] leading-loose text-[14px]" data-k="from"></div>
+    </div><!-- /reveal -->
+
+    <!-- ── MESSAGE TRIGGER ── -->
+    <button class="message-trigger hide fixed z-20 font-bold text-white text-[14px] px-5 py-3 rounded-full border-0 cursor-pointer whitespace-nowrap animate-heartbeat
+                   transition-all duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-purple-300"
+      id="messageOpen" type="button" aria-haspopup="dialog" aria-controls="messageDialog"
+      style="right:max(16px,env(safe-area-inset-right,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));
+             background:linear-gradient(135deg,#c084fc,#7e22ce);box-shadow:0 10px 26px rgba(126,34,206,.34),inset 0 1px 0 rgba(255,255,255,.28)">
+      💌 ກົດເບິ່ງຂໍ້ຄວາມພິເສດ
+    </button>
+
+    <!-- message dialog -->
+    <dialog class="message-dialog" id="messageDialog" aria-label="ຂໍ້ຄວາມພິເສດ">
+      <button class="message-close sticky top-0 float-right w-9 h-9 grid place-items-center -mt-3 -mr-2.5 ml-2.5 mb-1.5 p-0 border-0 rounded-full text-[#7e22ce] text-[22px] leading-none cursor-pointer"
+        id="messageClose" type="button" aria-label="ປິດ"
+        style="background:linear-gradient(180deg,#ede9fe,#faf5ff);box-shadow:0 4px 12px rgba(126,34,206,.15)">×</button>
+      <p id="specialMessage" class="m-0 text-[15px] leading-loose"></p>
+    </dialog>
+
+    <!-- ── STORY CARD ── -->
+    <dialog class="story-card" id="storyCard"
+      aria-label="ກາດຂໍ້ຄວາມຕໍ່ເນື່ອງ" aria-labelledby="storyTitle" aria-describedby="storyText storyLetter">
+
+      <header class="story-card-header">
+        <strong id="storyTitle">💌 ມີຫຍັງຢາກບອກເຈົ້າ</strong>
+        <button class="story-close" id="storyClose" type="button" aria-label="ປິດກາດ">×</button>
+      </header>
+
+      <p class="story-card-text" id="storyText" aria-live="polite"></p>
+
+      <div class="story-letter" id="storyLetter" hidden>
+        <div class="story-letter-body"></div>
+        <p class="story-reaction-reply" aria-live="polite" hidden></p>
+      </div>
+
+      <span class="story-sticker" role="img" aria-label="ອ້ອນໆ 🥺">🥺👉👈💕</span>
+
+      <div class="story-progress" aria-label="ຄວາມຄືບໜ້າຂອງກາດ">
+        <span></span><span></span><span></span>
+      </div>
+      <div class="story-actions" id="storyActions"></div>
+    </dialog>
+
+    <!-- story open trigger -->
+    <button class="story-trigger fixed z-20 grid place-items-center w-[54px] h-[54px] m-0 p-0 border-2 border-white/88 text-white rounded-[18px] text-2xl cursor-pointer
+                   transition-all duration-200 hover:-translate-y-1 hover:rotate-[-2deg] hover:scale-110
+                   focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-purple-300"
+      id="storyOpen" type="button" aria-expanded="false" aria-controls="storyCard" aria-label="ເປີດກາດຂໍ້ຄວາມໃໝ່"
+      style="right:max(16px,env(safe-area-inset-right,0px));bottom:calc(86px + env(safe-area-inset-bottom,0px));
+             background:linear-gradient(145deg,#c084fc,#7e22ce);box-shadow:0 10px 24px rgba(126,34,206,.32)">📨</button>
+
+  </div><!-- /wrap -->
+
+  <script src="assets/js/app.js" defer></script>
+  <script src="assets/js/story.js" defer></script>
+</body>
+
+</html>
