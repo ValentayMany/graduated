@@ -21,32 +21,32 @@ var storyLetterParagraphs = [
 var storyChoices = [
   [
     {
-      label: "ຢາກຮູ້ຢູ່ 🤭",
-      reply: "ຫູຍ ຢາກຮູ້ຫຼາຍເນາະ ຊັ້ນອ່ານຕໍ່ເລີຍເດີ້ 💌",
+      label: "ຢາກຮູ້ໆ 🌸",
+      reply: "ດີໃຈຫຼາຍ ທີ່ຢາກຮູ້ ອ່ານໄປຊ້າໆເດີ ເຂົາຕັ້ງໃຈຂຽນໄວ້ໃຫ້ 💌",
     },
     {
-      label: "ບໍ່ບອກດອກ 🙈",
-      reply: "ອ້າວວ ບໍ່ຢາກຮູ້ກໍບໍ່ເປັນຫຍັງ… ແຕ່ຢູ່ອ່ານນຳກັນກ່ອນເດີ້ 🥺",
-    },
-  ],
-  [
-    {
-      label: "ສັນຍາແລ້ວ 🤞",
-      reply: "ເກັ່ງຫຼາຍ ຄົນຮູ້ໃຈແບບນີ້ຕ້ອງໄດ້ລາງວັນແລ້ວ 💗",
-    },
-    {
-      label: "ຂໍບອກຕໍ່ແນ່ 🤫",
-      reply: "ບໍ່ໄດ້ເດີ້ ນີ້ຄວາມລັບຂອງເຮົາສອງຄົນ ສັນຍາກ່ອນເນາະ 🙈",
+      label: "ຍັງຂີ້ສົງໄສຢູ່ 🔍",
+      reply: "ຫັ່ນແນ່ ຮູ້ວ່າຕ້ອງສົງໄສ 🥺✨",
     },
   ],
   [
     {
-      label: "ແມ່ນແລ້ວ 🤭",
-      reply: "ໂອເຄ ເຊື່ອກໍໄດ້… ແຕ່ຍິ້ມຫວານໆໃຫ້ກັນກ່ອນເດີ້ 😊",
+      label: "ສັນຍາເນີ້ 🤝",
+      reply: "ຂອບໃຈຫຼາຍໆ ທີ່ໄວ້ໃຈກັນ ເຂົາຈະເລົ່າໃຫ້ຟັງທຸກຢ່າງ 🌷",
     },
     {
-      label: "ກໍອາດຈະມີນ້ອຍ 😝",
-      reply: "ຈັບໄດ້ແລ້ວ! ຮູ້ຢູ່ວ່າຕ້ອງມີຄົນແອບອ່ານ 😆💕",
+      label: "ບໍ່ມີແນ່ນອນ 😅",
+      reply: "Naahhh ຄວາມລັບມັນຕ້ອງລັບເດີ  🫣",
+    },
+  ],
+  [
+    {
+      label: "ບໍ່ໃຫ້ແນ່ນອນ 💪",
+      reply: "ເກັ່ງ! ຄົນໄວ້ໃຈໄດ້ແບບນີ້ ໜ້າຮັກຫຼາຍໆ 💗",
+    },
+    {
+      label: "ກໍອາດຈະ 😬",
+      reply: "ເຫ້ ຈັບໄດ້ແລ້ວວວວ 555 ແຕ່ຢ່າລືມເນີ້ ນີ້ຄວາມລັບຂອງເຮົາສອງຄົນເດີ 🤫",
     },
   ],
 ];
@@ -194,17 +194,28 @@ function createStoryButton(label, className, onClick) {
   storyActions.appendChild(button);
 }
 
-function confettiParty() {
-  var emojis = ["🌸", "✨", "💗", "🎉", "🎀", "🌷", "⭐", "💕"];
-  for (var i = 0; i < 35; i++) {
+function confettiParty(container) {
+  var emojis = [
+    "💗", "💗", "💗", "💗", "💗",
+    "💕", "💕", "💕", "💕",
+    "💖", "💖", "💖",
+    "🩷", "🩷", "🩷",
+    "❤️", "❤️",
+    "💓", "💓",
+    "💞", "💞",
+    "🫶🏻", "🫶🏻",
+    "✨", "✨", "🌸", "🌸", "🎀", "💝", "💘", "🌷",
+  ];
+  var root = container || document.body;
+  for (var i = 0; i < 120; i++) {
     var s = document.createElement("span");
     s.className = "c";
     s.textContent = emojis[Math.floor(Math.random() * emojis.length)];
     s.style.left = Math.random() * 100 + "vw";
-    s.style.animationDuration = 1.8 + Math.random() * 2 + "s";
-    s.style.animationDelay = Math.random() * 0.4 + "s";
-    document.body.appendChild(s);
-    setTimeout(function (el) { el.remove(); }, 4500, s);
+    s.style.animationDuration = 1.2 + Math.random() * 2.5 + "s";
+    s.style.animationDelay = Math.random() * 0.8 + "s";
+    root.appendChild(s);
+    setTimeout(function (el) { el.remove(); }, 5500, s);
   }
 }
 
@@ -225,45 +236,18 @@ function renderStoryActions() {
     return;
   }
 
-  if (storyStep === storySteps.length - 1 && finalReaction === null) {
-    storyActions.className = "story-actions story-reactions-wrap";
-
-    var promptText = document.createElement("p");
-    promptText.className = "story-reaction-prompt";
-    promptText.innerHTML = "💌 <span>ກົດບອກຄວາມຮູ້ສຶກໃຫ້ເຂົາຮູ້ແນ່ເດີ</span> 💌";
-    storyActions.appendChild(promptText);
-
-    var btnsContainer = document.createElement("div");
-    btnsContainer.className = "story-reactions-btns";
-
-    function addReaction(emoji, label, message) {
-      var btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = "story-reaction-card";
-      btn.innerHTML = `<span class="reaction-emoji">${emoji}</span><span class="reaction-label">${label}</span>`;
-      btn.setAttribute("aria-label", label);
-      btn.addEventListener("click", function () {
-        chooseFinalReaction(message);
-        confettiParty();
-      });
-      btnsContainer.appendChild(btn);
-    }
-
-    addReaction("💗", "ຍິ້ມແລ້ວເດີ", "ເຫັນຫົວໃຈແລ້ວ ຮູ້ເລີຍວ່າຍິ້ມຢູ່ 💗");
-    addReaction("😂", "ຫົວເລີຍ", "ຫົວແລ້ວແມ່ນບໍ່ ຢ່າລືມຍິ້ມໃຫ້ເຂົານຳເດີ້ 😂");
-    addReaction("🥺", "ຊາບຊຶ້ງຫຼາຍ", "ໂອ໋ ຢ່າເຮັດໜ້າອ້ອນແບບນັ້ນ 🥺💕");
-
-    storyActions.appendChild(btnsContainer);
-    return;
-  }
 
   storyActions.className = "story-actions story-next-grid";
   createStoryButton(
-    storyStep === storySteps.length - 1 ? "ປິດກາດ 💗" : "ໄປຕໍ່ 💗",
+    storyStep === storySteps.length ? "ປິດກາດ 💗" : "ໄປຕໍ່ 💗",
     "story-next",
     function () {
-      if (storyStep === storySteps.length - 1) {
+      if (storyStep === storySteps.length) {
+        this.disabled = true;
         storyCard.close();
+        setTimeout(function () {
+          confettiParty(document.body);
+        }, 50);
         return;
       }
       storyStep++;
@@ -272,6 +256,7 @@ function renderStoryActions() {
     },
   );
 }
+
 
 function chooseFinalReaction(message) {
   finalReaction = message;
@@ -283,14 +268,41 @@ function chooseFinalReaction(message) {
 }
 
 function renderStoryStep() {
-  var isLetterPage = storyStep === storySteps.length - 1;
+  var isLetterPage = storyStep === storySteps.length;
+  var storySticker = storyCard.querySelector(".story-sticker");
+
+  // Step-specific stickers matching the mood
+  var stepStickers = [
+    "👀✨",       // Step 0: สงสัย/อยากรู้
+    "🤫🌸",      // Step 1: ความลับ
+    "🤝💕",      // Step 2: สัญญา
+    "💌🥺",      // Step 3: จดหมายรัก
+  ];
+
   storyCard.classList.toggle("has-letter", isLetterPage);
   storyText.hidden = isLetterPage;
   storyLetter.hidden = !isLetterPage;
-  storyCard.querySelector(".story-sticker").hidden = isLetterPage;
+  storySticker.hidden = isLetterPage;
+  if (!isLetterPage && stepStickers[storyStep]) {
+    storySticker.textContent = stepStickers[storyStep];
+  }
   storyReactionReply.hidden = true;
   storyReactionReply.textContent = "";
   if (!isLetterPage) storyText.textContent = storySteps[storyStep];
+  // Update header title per step
+  var stepTitles = [
+    "❤ ຄວາມລັບນ້ອຍໆ",
+    "❤ ສັນຍາກັນກ່ອນເດີ",
+    "❤ ໝັ້ນໃຈໄດ້ເລີຍ?",
+    "❤ ຈາກໃຈຈິງ",
+  ];
+  var titleEl = storyCard.querySelector("#storyTitle, #homeStoryTitle");
+  if (titleEl) {
+    titleEl.textContent = isLetterPage
+      ? "❤ ຄວາມໃນໃຈ 💌"
+      : (stepTitles[storyStep] || "❤ ມີຫຍັງຢາກບອກເຈົ້າ");
+  }
+
   storyProgress.forEach(function (dot, index) {
     dot.classList.toggle("active", index === storyStep);
   });
